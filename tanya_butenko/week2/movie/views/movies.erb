@@ -6,8 +6,16 @@
 	
 </form>
 
-<%  unless @movie.nil? %>  
-		<img src="<%= @movie %>">
+<%  unless @movie.nil? %> 
+		<% @results.each do |Title, imdbID| %>
+			<% if  == 1 %>
+				<p> <%= params[:movie_poster] %></p>
+				<img src="<%= @movie %>">
+			<%else%>
+			<a href=""><%=   %></a></br>
+			<%end%>
+		<%end%> 
+		
 
 	<%else%>
 		<p>
