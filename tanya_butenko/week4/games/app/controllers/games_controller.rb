@@ -30,21 +30,21 @@ class GamesController < ApplicationController
 	end
 
 	def rock_paper_scissors
+		#use choice here so it's possible to do each for creation of radio buttons on page
+		@choice = ['rock', 'spock', 'paper', 'lizard', 'scissors']
 	end
 
 	def rock_paper_scissors_play
-		b = {
-			'rock' => 0,
-			'spock' => 1,
-		    'paper' => 2,
-		    'lizard' => 3, 
-		    'scissors' => 4     
-		}
 
-		comp_choice = b.fetch(b.keys.sample)
-		@comp = b.key(comp_choice)
-		player_choice = params[:throw].to_i
-		@player = b.key(player_choice)
+		@choice = ['rock', 'spock', 'paper', 'lizard', 'scissors']
+
+		#randomised choice of computer
+		comp_choice = @choice.index(@choice.sample)
+		@comp = @choice[comp_choice]
+
+		#choice of player + index in choice array so we can use it in calculation
+		@player = params[:throw]
+		player_choice = @choice.index(@player)
 		
 		calc = (player_choice - comp_choice)%5
 

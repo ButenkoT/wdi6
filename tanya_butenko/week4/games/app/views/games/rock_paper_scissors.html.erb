@@ -4,13 +4,12 @@
 
 <form action='rock_paper_scissors/play'>
 
-	<label>
-		<input type="radio" name="throw" value="0"> Rock<br>
-		<input type="radio" name="throw" value="2"> Paper<br>
-		<input type="radio" name="throw" value="4"> Scissors<br>
-		<input type="radio" name="throw" value="3"> Lizard<br>
-		<input type="radio" name="throw" value="1"> Spock<br>
-	</label>
+		<% @choice.each do |val| %>
+
+			<input type='radio' name='throw' value="<%= val%>"><%= val %><br>
+
+		<%end%>
+	
 	<button>GO</button>
 
 </form>
