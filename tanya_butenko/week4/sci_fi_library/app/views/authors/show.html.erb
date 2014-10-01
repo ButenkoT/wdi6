@@ -10,10 +10,14 @@
 			<%= link_to book.title, book %><br>
 		<%end%>
 	</div>
-	
+
 	<div class="edit_delete">
+		<div class="button">
 		<%= link_to('Edit', edit_author_path(@author)) %>
+		</div>
+		<div class="button">
 		<%= link_to 'Delete', @author, :method => :delete , :data => {:confirm => 'Are you sure?'}%>
+		</div>
 	</div>
 
 	

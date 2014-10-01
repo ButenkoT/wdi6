@@ -1,13 +1,18 @@
 <div class="author">
-<div class="show">
-	<h2><%= @book.title %></h2>
-	<h3>Author: 
-		<%= link_to(@book.author.name, @book.author) if @book.author%>
-	</h3>
+	<div class="show">
+		<h2><%= @book.title %></h2>
+		<h3>Author: 
+			<%= link_to(@book.author.name, @book.author) if @book.author%>
+		</h3>
 
-	<%= image_tag @book.image, :class => 'thumbnail'%>
-</div>
-
-<%= link_to('Edit', edit_book_path(@book)) %>
-<%= link_to('Delete', @book, :method => :delete , :data => {:confirm => 'Are you sure?'}) %>
+		<%= image_tag @book.image, :class => 'thumbnail'%>
+	</div>
+	<div class='edit_delete'>
+		<div class='button'>
+			<%= link_to('Edit', edit_book_path(@book)) %>
+		</div>
+		<div class='button'>
+			<%= link_to('Delete', @book, :method => :delete , :data => {:confirm => 'Are you sure?'}) %>
+		</div>
+	</div>
 </div>
