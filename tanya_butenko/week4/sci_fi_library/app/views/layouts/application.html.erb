@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SciFiLibrary</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header>
+	<nav>
+		<ul>
+			<li><%= link_to('Authors', authors_path) %></li>
+			<li><%= link_to('New Author', new_author_path) %></li>
+			<li><%= link_to('Books', books_path) %></li>
+			<li><%= link_to('New Book', new_book_path) %></li>
+		</ul>
+	</nav>
+
+
+</header>
+
+<div class="container">
+	<%= yield %>
+</div>
+
+</body>
+</html>
