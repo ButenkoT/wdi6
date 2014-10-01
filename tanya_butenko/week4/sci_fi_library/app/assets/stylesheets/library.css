@@ -9,17 +9,52 @@ body{
 	margin: 0;
 }
 
+nav{
+	display:inline-block;
+	position:relative;
+	text-align:right;
+}
+
+nav a{
+	font-size:30px;
+}
+
 nav ul {
-	margin:0;
+	margin-top:40px;
+	margin-bottom:10px;
 	padding:0;
 	list-style: none;
-	text-align:right;
+	
 }
 
 nav li{
 	display:inline;
+	padding:5px;
 }
 
+@-webkit-keyframes slide {
+	14% { left: 14%;}
+	40% { left: 40%;}
+	
+}
+
+.logo{
+	display:inline-block;
+	font-family: 'Geostar Fill', cursive;
+	position:absolute;
+	left:145px;
+	top:25px;
+	width:30px;
+	height:20px;
+	-webkit-animation: slide 5s infinite ease-in-out;
+	-moz-animation: slide 5s infinite  ease-in-out;
+	animation: slide 5s infinite  ease-in-out;
+	transform: rotate(-20deg);
+}
+
+h2, h3{
+	text-shadow:2px 2px black;
+}
 
 img.thumbnail {
 	width:15em;
@@ -29,7 +64,7 @@ img.thumbnail {
 
 a{
 	text-decoration: none;
-	
+	color:white;
 }
 
 a:hover{
@@ -61,7 +96,9 @@ header{
 	margin: 10px auto;
 	background: green;
 	height: 90px;
-	box-shadow: 5px 5px black;
+	box-shadow: 3px 3px black;
+	text-align:right;
+	background-color:#05162C;
 
 }
 
@@ -91,7 +128,7 @@ header{
 }
 
 .show{
-	
+	text-align:center;
 	display: inline-block;
 	margin: 10px 30px;
 	vertical-align: top;
@@ -107,6 +144,7 @@ header{
 	max-width:230px;
 	vertical-align: top;
 }
+
 .edit_delete{
 	display: inline-block;
 	position:relative;
