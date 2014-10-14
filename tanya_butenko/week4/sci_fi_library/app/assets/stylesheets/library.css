@@ -47,9 +47,9 @@ nav li{
 	top:25px;
 	width:30px;
 	height:20px;
-	-webkit-animation: slide 5s infinite ease-in-out;
-	-moz-animation: slide 5s infinite  ease-in-out;
-	animation: slide 5s infinite  ease-in-out;
+	-webkit-animation: slide 5s infinite linear;
+	-moz-animation: slide 5s infinite  linear;
+	animation: slide 5s infinite  linear;
 	transform: rotate(-20deg);
 }
 
