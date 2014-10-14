@@ -9,8 +9,8 @@ var random = function(array){
 }
 
 
-var result = function (first, second) {
-  var answer =  "So... your start-up is basically a " + random(first) + " for " + random(second) + "?";
+var result = function(first, second){
+  var answer = "So... your start-up is basically a " + random(first) + " for " + random(second) + "?";
   return answer;
 }
 
