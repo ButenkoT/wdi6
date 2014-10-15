@@ -3,16 +3,20 @@
  <head>
   <meta charset="utf-8" />
   <title>Cat Walk</title>
+  <style>
+    body, html {overflow: hidden;}
+  </style>
  </head>
- <body>
+ <body onload='init()'>
   
   <button id="start-button">Start</button>
   <button id="speed-button">Go Faster!</button>
   <button id="stop-button">Stop</button>
   <div id="info"></div>
   
-  <img style="position:absolute; left: 0px; top: 80px;" src="http://www.anniemation.com/clip_art/images/cat-walk.gif">
- 
+  <img id="cat" style="position:absolute; left: 0px; top: 80px;" src="http://www.anniemation.com/clip_art/images/cat-walk.gif">
+  <img id="mouse" style="position:absolute;" src ="http://madsenworld.dk/anigif/animals/mousrun3.gif">
+  <img id="sadcat" style="position:absolute; width: 125px; height:150px; left: 400px; top: 200px;" src="http://25.media.tumblr.com/tumblr_mbcdgf0Wa61rvoz32o1_500.png">
   <article>
 <!-- <p>Move the above code into a separate JS file!</p> -->
 <!-- <p>Add an event listener to the start button, so that the cat starts moving across the screen when its clicked.</p> -->
