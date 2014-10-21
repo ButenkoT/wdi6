@@ -1,0 +1,13 @@
+.container{
+  max-width: 960px;
+  margin:auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+
+.result{
+  margin: 10px;
+  border: 1px solid black;
+}
