@@ -1,11 +1,31 @@
-(function () {
-  'use strict'; //restrict js
+
+$(document).ready(function(){
+  $('#search'). on('click', stopCounter);
+ 
+
+  
 
   var mta = {
     n: ["Times Square", "34", "28", "23", "Union Square", "8"],
     l: ["8", "6", "Union Square", "3", "1"],
     6: ["Grand Central", "33", "28", "23", "Union Square", "Astor Place"]
   };
+
+  var $select = $("<select/>");
+  $('.dep').append($select);
+
+
+  $.each(mta, function(line, stops) {
+    var $optGroup = $("<optgroup>", {label: line});
+    $.each(stops, function(line, station) {
+      var $option = $("<option/>", {label: station, value: line + ',' + station, text: station});
+      $optGroup.append($option);
+    })
+    $select.append($optGroup);
+  });
+
+  
+  $('.arr').append($select.clone());
 
   //looking for intersection in all 3 lines
   function intersection(array1, array2) {
@@ -15,6 +35,8 @@
   }
 
   function stopCounter(x, y) {
+    var departure = $('.dep select').val();
+    var arrival = $('.arr select').val();
 
     var line1 = x[0],
       line2 = y[0],
@@ -39,7 +61,4 @@
     return result;
   }
 
-  console.log(stopCounter(["n", "34"], ["n", "23"]));
-  console.log(stopCounter(["n", "34"], ["l", "8"]));
-  console.log(stopCounter(["n", "Union Square"], ["6", "Union Square"]));
-}(window));
+ });
