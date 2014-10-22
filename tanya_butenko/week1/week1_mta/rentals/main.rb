@@ -141,30 +141,3 @@ end
 
 
 binding.pry
-
-
-# def menu
-# 	puts "1. List all apts"
-# 	puts "q. Quit"
-# end
-
-# def read_selection
-# 	menu
-# 	gets.chomp.downcase
-# end
-
-# menu_option = read_selection
-
-# until menu_option == 'q'
-# 	case menu_option
-# 	when '1'
-# 		#building all apt
-# 		$buildings.each do |b|
-# 			b.apartments.each do |apartment|
-# 				puts apartment
-# 			end
-# 		end
-
-# 		menu_option = read_selection
-# 	end
-# end

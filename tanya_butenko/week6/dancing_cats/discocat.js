@@ -12,9 +12,9 @@ var button3 = document.getElementById('speed-button');
 function move() {
   var img = document.getElementById('cat');
   var currentLeft = parseInt(img.style.left);
-  img.style.left = (currentLeft + movePixels) + 'px';
-  currentLeft = parseInt(img.style.left);
-  return currentLeft;
+  var newLeft = currentLeft + movePixels;
+  img.style.left = newLeft + 'px';
+  return newLeft;
 }
 
 function catWalk() {
@@ -25,9 +25,11 @@ function catWalk() {
   if ((currentLeft > (window.innerWidth-img.width)) || (currentLeft < 0)) {
     rotate = (rotate + 180) % 360;
     movePixels = -movePixels;
-    img.style.transform = 'rotateY(' + rotate + 'deg)';
+    img.style.transform = 'rotateY(' + rotate + 'deg)';}
     // img.style.width = img.width-2 + 'px';
-  }
+  // } else if (( currentLeft + img style.width/2) window.innerWidth/2){
+  //   catTimer
+  // }
 }
 
 //start walking black cat
@@ -87,35 +89,62 @@ function moveIt() {
 
 //Cat number 2 responds to the keyboard left, right, up, down
 
+var metaChar = false;
+var exampleKey = 16;
 
 
-var Cat = function(){
-  var sadcat = document.getElementById('sadcat');
-  var position = parseInt(sadcat.style.left);
-  if (this.keyboarder.isDown(this.keyboarder.KEYS.LEFT)){
-        sadcat.style.left -= 10 + 'px';
-    } else if (this.keyboarder.isDown(this.keyboarder.KEYS.RIGHT)){
-        sadcat.style.left += 10 + 'px';
+function keyEvent(event) {
+  var key = event.keyCode || event.which;
+  var keychar = String.fromCharCode(key);
+  if (key == exampleKey) {
+    metaChar = true;
+  }
+  if (key != exampleKey) {
+    if (metaChar) {
+      alert("Combination of metaKey + " + keychar);
+      metaChar = false;
+    } else {
+      alert("Key pressed " + key);
     }
-
-  this.keyboarder = new Keyboarder();
-
+  }
 }
 
-var Keyboarder = function() {
-  var keyState = {};
+function metaKeyUp (event) {
+  var key = event.keyCode || event.which;
 
-  window.onkeydown = function(event) {
-    keyState[event.keyCode] = true;
-  };
-
-  window.onkeyup = function(event) {
-    keyState[event.keyCode] = false;
-  };
-
-  this.isDown = function(keyCode){
-    return keyState[keyCode] === true;
-  };
-
-  this.KEYS = { LEFT:37, RIGHT:39, SPACE:32};
+  if (key == exampleKey) {
+    metaChar = false;
+  }
 }
+
+
+// var Cat = function(){
+//   var sadcat = document.getElementById('sadcat');
+//   var position = parseInt(sadcat.style.left);
+//   if (this.keyboarder.isDown(this.keyboarder.KEYS.LEFT)){
+//         sadcat.style.left -= 10 + 'px';
+//     } else if (this.keyboarder.isDown(this.keyboarder.KEYS.RIGHT)){
+//         sadcat.style.left += 10 + 'px';
+//     }
+
+//   this.keyboarder = new Keyboarder();
+
+// }
+
+// var Keyboarder = function() {
+//   var keyState = {};
+
+//   window.onkeydown = function(event) {
+//     keyState[event.keyCode] = true;
+//   };
+
+//   window.onkeyup = function(event) {
+//     keyState[event.keyCode] = false;
+//   };
+
+//   this.isDown = function(keyCode){
+//     return keyState[keyCode] === true;
+//   };
+
+//   this.KEYS = { LEFT:37, RIGHT:39, SPACE:32};
+// }

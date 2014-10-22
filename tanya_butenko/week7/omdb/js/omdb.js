@@ -1,5 +1,6 @@
 $(document).ready(function(){
   $('#search_button').on('click', showMovies);
+  //can do parent delegation to put 2nd click on. it ll listen to parent and will work anytime child when child will be ready
 });
 
 function showMovies(search) { 
