@@ -12,13 +12,15 @@ $(document).ready(function(){
 
     $('.word-container').append(wordHTML({word: i}))
   });
+  console.log(word);
 
-
-  $('.letter-container').on('click', function () {
-    $(this).toggleClass('flipped');
-  });
+  // $('.letter-container').on('click', function () {
+  //   $(this).toggleClass('flipped');
+  // });
 
   var guess_attempts = 8;
+
+  console.log('You have ' + guess_attempts + ' attempts left');
 
   $(document.body).on('keypress', '#user_letter', function(e) {
     
@@ -27,8 +29,13 @@ $(document).ready(function(){
         e.preventDefault();
 
         var search_letter = $('#user_letter').val().toLowerCase();
+
         console.log(search_letter);
-        oneLetterInput();
+        //check that input is only 1 letter
+        oneLetterInput(search_letter);
+        //check if any matching letter in the word
+        matchingLetter(word, search_letter);
+        //clean the input field
         $('#user_letter').val('');
         
     }
@@ -37,28 +44,38 @@ $(document).ready(function(){
 });
 
 
- 
-// document.getElementById("word").textContent = word;
-
-
-//user input for 1 letter
-function oneLetterInput(){
-  if ($('#user_letter').val().length > 1){
-    alert('Put one letter');
-    // return;
+//check if user input is 1 letter
+function oneLetterInput(foo){
+  if (! /^[A-z]$/.test(foo)) {
+      alert('Put one letter');
   };
-}
+};
 
 
+//checking if word has a user_input_letter
+function matchingLetter(word, search_letter){
+  // if (word.indexOf(search_letter) != -1){
+  for (var i = 0, len = word.length; i < len; i++) {
+    if (word[i]  ==  search_letter){
+        //flip square with a letter, so we can see it
+        $('.word-container:contains(word[i])').toggleClass('flipped');
+        console.log('this letter in a word');
+    } else {
+      console.log('this letter is not in the word');
+      // guess_attempts -= 1;
+      // // && 1 part of human appeares on the screen
+      // gameOver(guess_attempts);
+    }
+  }
+};
 
-//eteration throught the word to check if there is a letter there
-    // if letter is there:
-        //show letter in a proper squares
-    // if letter is wrong:
-        //minus life points
-        // && 1 part of human appeares on the screen
-        //if its life_points = 0
-            //game is over
+ //if guess_attempts = 0 game is over
+function gameOver(attempt){
+  if (attempt == 0){
+    alert('Your are dead! Game is over!');
+    //button try again
+  };
+};
 
 
 //button reset - choose another word from the list
