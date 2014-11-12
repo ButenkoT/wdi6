@@ -61,7 +61,6 @@ var guess_attempts = 8;
 
 //flip square with a letter, so we can see it
 function findLetter(letter){
-  
   $word = $('.word:contains("'+letter+'")');
   if ($word.length) {
     $word.closest('div.letter-container').addClass('flipped');
