@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman</title>
+  <script src="js/jquery.js"></script>
+  <script src='js/handlebars.js'></script>
+  <script src="js/underscore.js"></script>
+  <script src="js/hangman.js"></script>
+  <link rel="stylesheet" href="css/hangman.css">
+</head>
+<body>
+  
+  <div class="container">
+
+    <h1>Hangman Game</h1>
+    <p>Guess word letter by letter. If your guess is wrong you loose 1 point. You have 8 points in total.</p>
+
+    <div class="word-container">
+      <script type='template/handlebars' id='wordTemplate'>
+        <div class="letter-container">
+          <div class="flipper">
+            <div class="front">
+            </div>
+            <div class="back">
+              <div class='word'>
+              {{word}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </script>
+    </div>
+    <input id="user_letter" placeholder="print letter here" autofocus="true">
+
+  </div>
+
+</body>
+</html>

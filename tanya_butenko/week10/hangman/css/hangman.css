@@ -1,0 +1,106 @@
+.container{
+  max-width: 960px;
+  margin:auto;
+  border: 1px solid red;
+  text-align: center;
+}
+
+/* entire container, keeps perspective */
+.letter-container {
+  perspective: 1000;
+}
+  /* flip the pane when hovered */
+  .letter-container.flipped .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+.letter-container, .front, .back {
+  width: 50px;
+  height: 50px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
+
+
+/* Customisations *****************/
+
+
+.front{
+  border: 1px solid white;
+  border-radius: 2px;
+  background-color: #6d695c;
+  background-image:
+  repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: 20px 20px;
+}
+
+.back{
+  border: 1px solid black;
+  border-radius: 2px;
+  background-color: white;
+  text-align: center;
+  font-size: 200%;
+}
+.letter-container{
+  display: inline-block;
+  margin-left: 5px;
+}
+
+
+/* new stuff ***********************************************************/
+
+input{
+  height:20px;
+  width: 90px;
+  margin:20px 0;
+}
+
+.word-container{
+  border: 1px solid blue;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
