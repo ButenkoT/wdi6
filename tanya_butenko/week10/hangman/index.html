@@ -31,7 +31,13 @@
         </div>
       </script>
     </div>
-    <input id="user_letter" placeholder="print letter here" autofocus="true">
+    <form action="" id="user_form">
+      
+      <input name="letter" id="user_letter" placeholder="print letter here" autofocus="true"
+      pattern="[a-zA-Z]{1}" required>
+    </form>
+    <button id="give_up_button">Give up</button>
+    <button id="reset_word_button">Give up</button>
 
   </div>
 

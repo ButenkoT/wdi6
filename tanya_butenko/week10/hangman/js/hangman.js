@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   var list_of_words = ['necklace', 'needle', 'onion', 'pants', 'passport'];
   //randomly choosing the word from list
-  var word = list_of_words[Math.floor(Math.random() * list_of_words.length)];
+  randomWord(list_of_words);
 
   //put the amount of squares according to the amounth of letters in the word to the screen, with word letters on the back side of the squares
   _(word).each(function(i){
@@ -12,62 +12,56 @@ $(document).ready(function(){
 
     $('.word-container').append(wordHTML({word: i}))
   });
+
   console.log(word);
 
-  // $('.letter-container').on('click', function () {
-  //   $(this).toggleClass('flipped');
-  // });
 
-  var guess_attempts = 8;
+  $(document.body)
+    .on('submit', '#user_form', function(e) {
+      e.preventDefault();
+      inputLetter();      
+    })
 
-  console.log('You have ' + guess_attempts + ' attempts left');
+    .on('click', '#give_up_button', function(e) {
+      e.preventDefault();
+      giveUp();
+    })
 
-  $(document.body).on('keypress', '#user_letter', function(e) {
-    
-    if (e.which === 13) { // if is enter
-
-        e.preventDefault();
-
-        var search_letter = $('#user_letter').val().toLowerCase();
-
-        console.log(search_letter);
-        //check that input is only 1 letter
-        oneLetterInput(search_letter);
-        //check if any matching letter in the word
-        matchingLetter(word, search_letter);
-        //clean the input field
-        $('#user_letter').val('');
-        
-    }
-  });
+    .on('click', '#reset_word_button', function(e) {
+      e.preventDefault();
+      resetWord();
+    });
 
 });
 
-
-//check if user input is 1 letter
-function oneLetterInput(foo){
-  if (! /^[A-z]$/.test(foo)) {
-      alert('Put one letter');
-  };
+function randomWord(words){
+  var word = words[Math.floor(Math.random() * words.length)];
+  return word;
 };
 
 
-//checking if word has a user_input_letter
-function matchingLetter(word, search_letter){
-  // if (word.indexOf(search_letter) != -1){
-  for (var i = 0, len = word.length; i < len; i++) {
-    if (word[i]  ==  search_letter){
-        //flip square with a letter, so we can see it
-        $('.word-container:contains(word[i])').toggleClass('flipped');
-        console.log('this letter in a word');
-    } else {
-      console.log('this letter is not in the word');
-      // guess_attempts -= 1;
-      // // && 1 part of human appeares on the screen
-      // gameOver(guess_attempts);
-    }
+function inputLetter(){
+  var search_letter = $('#user_letter').val().toLowerCase();
+  findLetter(search_letter);
+  $('#user_letter').val('');
+};
+
+var guess_attempts = 8;
+
+//flip square with a letter, so we can see it
+function findLetter(letter){
+  
+  $word = $('.word:contains("'+letter+'")');
+  if ($word.length) {
+    $word.closest('div.letter-container').addClass('flipped');
+  } else {
+    guess_attempts -= 1;
+    // && 1 part of human appeares on the screen
+    gameOver(guess_attempts);
   }
+  console.log(guess_attempts + ' attempts left');
 };
+
 
  //if guess_attempts = 0 game is over
 function gameOver(attempt){
@@ -77,8 +71,14 @@ function gameOver(attempt){
   };
 };
 
+//opens all letters of the word
+function giveUp(){
+  $('letter-container').addClass('flipped');
+};
 
-//button reset - choose another word from the list
-//button give up - shows the solution, ends game
+//choosing another word from the list
+function resetWord(){
+
+};
 
 
