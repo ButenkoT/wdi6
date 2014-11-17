@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 //choose random word from the list
 function randomWord(){
-  var list_of_words = ['necklace', 'needle', 'onion', 'pants', 'passport'];
+  var list_of_words = ['necklace', 'needle', 'onion', 'pants', 'passport', 'formula'];
   var word = list_of_words[Math.floor(Math.random() * list_of_words.length)];
   return word;
 };
@@ -36,7 +36,7 @@ function randomWord(){
 //put the amount of squares according to the amounth of letters in the word to the screen, with word letters on the back side of the squares
 
 function createWord(){
-  $('.letter-container').empty();
+  $('.word-container').empty();
   var x = randomWord();
   _(x).each(function(i){
 
@@ -67,7 +67,7 @@ function findLetter(letter){
   } else {
     guess_attempts -= 1;
     // && 1 part of human appeares on the screen
-    $('.hangman').closest('div').removeClass('hidden');
+    $('.hangman').find('.hidden:first').removeClass('hidden');
     gameOver(guess_attempts);
   }
   $('.attempts').text('Attempts left: ' + guess_attempts);
@@ -79,7 +79,7 @@ function gameOver(attempt){
   if (attempt == 0){
     alert('Your are dead! Game is over!');
     //button try again
-    $('.hangman').append('<img src="http://loldailyfun.com/wp-content/uploads/2012/04/Every-time-you-play-hangman.jpg">');
+    // $('.hangman').append('<img src="http://loldailyfun.com/wp-content/uploads/2012/04/Every-time-you-play-hangman.jpg">');
   };
 };
 
@@ -93,7 +93,7 @@ function resetWord(){
   createWord();
 };
 
-function letterOpen(){
+function letterOpen(){};
 
-}
-
+//check if letters in the word are all opened give another word, keep guess attempts + calculate score
+//you can put letter only once

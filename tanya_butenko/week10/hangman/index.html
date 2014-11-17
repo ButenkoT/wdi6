@@ -17,7 +17,9 @@
     <p>Guess word letter by letter. If your guess is wrong you loose 1 attempt. You have 8 attempts in total.</p>
 
     <div class="word-container">
-      <script type='template/handlebars' id='wordTemplate'>
+      
+    </div>
+    <script type='template/handlebars' id='wordTemplate'>
         <div class="letter-container">
           <div class="flipper">
             <div class="front">
@@ -30,14 +32,15 @@
           </div>
         </div>
       </script>
-    </div>
     <p>Put one letter in</p>
     <p class="attempts"></p>
+
     <form action="" id="user_form">
       
       <input name="letter" id="user_letter" placeholder="print letter here" autofocus="true"
       pattern="[a-zA-Z]{1}" required>
     </form>
+
     <button id="give_up_button">Give up</button>
     <button id="reset_word_button">Reset word</button>
     <button id="letter_open_button">Hint</button>
