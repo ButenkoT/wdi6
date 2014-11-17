@@ -7,23 +7,21 @@ class Hexadecimal
   end
 
   def to_decimal()
-    symbols = @number.split('').reverse
-
-    result = 0;
-    symbols.each_index  do |ind|
-
-      intval = symbols[ind].to_i(16)
-      p intval
-      if intval < 16
-        result = result + intval * 16 ** ind;
-      else
-        result = 0
-      end
-
+    unless @number =~ /^[0-9A-F]+$/i
+      return result = 0
     end
 
-      result
-    
+    symbols = @number.split('').reverse
+      
+    result = 0;
+    symbols.each_index  do |ind|
+     
+      intval = symbols[ind].to_i(16)
+
+      result = result + intval * 16 ** ind;
+    end
+
+    result
     # convert_base(16, 10)
   end
 
@@ -33,4 +31,4 @@ class Hexadecimal
 
 end
 
-p Hexadecimal.new('carrot').to_decimal;
+p Hexadecimal.new('100').to_decimal;
